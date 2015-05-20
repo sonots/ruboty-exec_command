@@ -38,6 +38,13 @@ Or install it yourself as:
 
     $ gem install ruboty-exec_command
 
+## Environment Variables
+
+| Name                     | Description                  | Default           |
+|--------------------------|------------------------------|-------------------|
+| EXEC_COMMAND_OUTPUT_ROOT | The command output root      | logs/exec_command |
+| EXEC_COMMAND_OUTPUT_DIR  | The command output directory | "#{root}/%Y-%m    |
+
 ## History
 
 - 0.1.1:
