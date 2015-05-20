@@ -9,8 +9,9 @@ When you say '@bot: example hello', ruboty runs the command
 $PWD/commands/example/hello or $RUBOTY_ROOT/commands/example/hello
 if RUBOTY_ROOT is defined.
 
-For your convinience, please implement -h option into the
-command. The usage will be used for help message of ruboty.
+All of commands under `commands/` directory are executed with `-h`
+option once to gather their usage information used for help message
+of ruboty. Please implement `-h` option into the commands.
 
 ## Command Controll
 
@@ -44,6 +45,7 @@ Or install it yourself as:
 |--------------------------|------------------------------|-------------------|
 | EXEC_COMMAND_OUTPUT_ROOT | The command output root      | logs/exec_command |
 | EXEC_COMMAND_OUTPUT_DIR  | The command output directory | "#{root}/%Y-%m    |
+| LOG_LEVEL                | log level                    | 1 (Logger::INFO)  |
 
 ## History
 
