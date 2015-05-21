@@ -134,7 +134,9 @@ module Ruboty
         FileUtils.ln_sf(stdout, stdout_link)
         FileUtils.ln_sf(stderr, stderr_link)
         cmd = %Q(#{absolute_path} #{args.join(" ")})
-        @pid = Process.spawn(cmd, pgroup: true, out: stdout, err: stderr)
+        with_clean_env do
+          @pid = Process.spawn(cmd, pgroup: true, out: stdout, err: stderr)
+        end
         Ruboty.logger.debug { "[EXEC_COMMAND] Invoked `#{cmd}`. PID: #{@pid}" }
         @pid
       end
@@ -143,6 +145,15 @@ module Ruboty
         run(args=['-h']).chomp
       end
 
+      def with_clean_env(&block)
+        if defined?(Bundler)
+          Bundler.with_clean_env do
+            yield
+          end
+        else
+          yield
+        end
+      end
     end
   end
 end
