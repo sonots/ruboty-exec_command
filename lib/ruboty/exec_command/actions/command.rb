@@ -41,11 +41,11 @@ module Ruboty
               message.reply(msg)
               message.reply(comm.stdout_log.chomp)
             elsif status.signaled?
-              msg = "[#{comm.command_name}] killed by signal #{status.termsig} PID: #{comm.pid}"
+              msg = "[#{comm.command_name}] killed by signal #{status.termsig}. PID: #{comm.pid}"
               Ruboty.logger.info { "[EXEC_COMMAND] #{msg}" }
               message.reply(msg)
             else
-              msg = "[#{comm.command_name}] exit status with #{status} PID: #{comm.pid}"
+              msg = "[#{comm.command_name}] failed with status #{status.exitstatus}. PID: #{comm.pid}"
               Ruboty.logger.info { "[EXEC_COMMAND] #{msg}" }
               message.reply(msg)
               message.reply(comm.stdout_log.chomp)
