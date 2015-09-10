@@ -45,10 +45,11 @@ module Ruboty
               Ruboty.logger.info { "[EXEC_COMMAND] #{msg}" }
               message.reply(msg)
             else
-              msg = "[#{comm.command_name}] exit status with #{status} PID: #{comm.pid}\n" +
-                comm.stdout_log + "stderr: " + comm.stderr_log.chomp
+              msg = "[#{comm.command_name}] exit status with #{status} PID: #{comm.pid}"
               Ruboty.logger.info { "[EXEC_COMMAND] #{msg}" }
               message.reply(msg)
+              message.reply(comm.stdout_log.chomp)
+              message.reply("stderr: " << comm.stderr_log.chomp)
             end
           end
 
